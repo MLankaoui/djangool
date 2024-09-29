@@ -1,0 +1,13 @@
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+
+}
+
+#nav {
+        padding: 20px;
+        font-size: 40px;
+        font-weight: 900;
+        background-color: #343a40;
+}
