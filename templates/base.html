@@ -1,17 +1,20 @@
 {% load django_bootstrap5 %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>DJANGOOL</title>
+        <link rel="stylesheet" href="{% static 'main.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/style/hero.css' %}">
         {% bootstrap_css %}
         
 </head>
 <body>
         {% bootstrap_javascript %}
         {% block navbar %} {% endblock %}
-        <div class="container-fluid">
+        <div>
                 {% block content %} {% endblock content  %}
         </div>         
 </body>
