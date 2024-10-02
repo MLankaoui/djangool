@@ -1,6 +1,7 @@
 .services {
         padding: 70px;
-        background-color: white;
+        background-color: #CCD4D4;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 .card {
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Adds a soft shadow */
