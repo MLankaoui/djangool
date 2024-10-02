@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="login">
+    <form method="POST" action="">
+        {% csrf_token %}
+        
+        <div class="form_container">
+            <!-- Display any success or error messages -->
+            {% for message in messages %}
+                <p class="alert alert-success">{{ message }}</p>
+            {% endfor %}
+
+            <h2>Login</h2>
+
+            <!-- Username Field -->
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{ form.username.label }}</label>
+                {% if form.username.errors %}
+                    <!-- Display username errors -->
+                    <div class="alert alert-danger">
+                        {{ form.username.errors }}
+                    </div>
+                {% endif %}
+                <input type="text" class="form-control" id="exampleFormControlInput1" name="username" placeholder="Enter your username" value="{{ form.username.value|default_if_none:'' }}">
+            </div>
+
+            <!-- Password Field -->
+            <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">{{ form.password.label }}</label>
+                {% if form.password.errors %}
+                    <!-- Display password errors -->
+                    <div class="alert alert-danger">
+                        {{ form.password.errors }}
+                    </div>
+                {% endif %}
+                <input type="password" class="form-control" id="exampleFormControlInput1" name="password" placeholder="Enter your password">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-secondary">Login</button>
+        </div>
+    </form>
+</div>
+{% endblock content %}
