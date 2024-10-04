@@ -1,6 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from app.models import Posts
+from django.contrib.auth.decorators import login_required
 
 
 def login_page(request) -> render:
@@ -18,9 +20,20 @@ def login_page(request) -> render:
             messages.warning(request, 'Username or password incorrect')
     return render(request, 'app/login.html')
 
+@login_required(login_url='login')
+def post_detail(request, pk):
+    post = get_object_or_404(Posts, pk=pk)
+    return render(request, 'app/post_detail.html', {'post': post})
 
-def successfully_logged_in(request) -> render:  # Corrected function name
-    return render(request, 'app/home.html')  # Corrected template filename
+
+@login_required(login_url='login')
+def announcements(request) -> render:  # Corrected function name
+    posts = Posts.objects.all()
+
+    context = {
+        "post": posts
+    }
+    return render(request, 'app/home.html', context)  # Corrected template filename
 
 
 def logout_user(request) -> redirect:

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block navbar %}
+        {% include 'landing/navbar.html' %}
+{% endblock navbar %}
+{% block content %}
+        <div class="container mt-5">
+                <div class="row">
+                <div class="col-md-12">
+                        <h1 class="mb-4">{{ post.title }}</h1>
+                        <h6 class="text-muted">By {{ post.author.username }} on {{ post.created_at|date:"d M Y" }}</h6>
+                        <hr>
+                        <div class="post-content mt-3">
+                        <p>{{ post.content|safe }}</p> <!-- Display the full content -->
+                        </div>
+                        <hr>
+                        <small class="text-muted">Last updated on {{ post.updated_at|date:"d M Y, H:i" }}</small>
+                        <div class="mt-4">
+                        <a href="{% url 'loggedin' %}" class="btn btn-secondary">Back to Announcements</a>
+                        </div>
+                </div>
+                </div>
+        </div>
+{% endblock content %}
