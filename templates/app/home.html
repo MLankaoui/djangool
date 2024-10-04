@@ -2,3 +2,30 @@
 {% block navbar %}
         {% include 'landing/navbar.html' %}
 {% endblock navbar %}
+{% block content %}
+        <div class="container mt-5">
+                <h1 class="text-center text-dark">Announcements</h1> <!-- Change text to light for dark background -->
+        
+                {% if post %}
+                <div class="row">
+                        {% for p in post %}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                                <div class="card h-100 text-light bg-dark"> <!-- Dark background for card and light text -->
+                                <div class="card-body">
+                                        <h5 class="card-title text-light">{{ p.title }}</h5> <!-- Light text for title -->
+                                        <h6 class="card-subtitle mb-2 text-muted">By {{ p.author.username }} on {{ p.created_at }}</h6>
+                                        <p class="card-text text-light">{{ p.content| safe|truncatewords:10 }}</p> <!-- Light text for content -->
+                                        <a href="{% url 'post_detail' p.pk %}" class="btn btn-outline-light">Read more</a> <!-- Light-themed button -->
+                                </div>
+                                <div class="card-footer bg-secondary"> <!-- Secondary color for footer -->
+                                        <small class="text-light">Last updated {{ p.updated_at|date:"d M Y, H:i" }}</small>
+                                </div>
+                                </div>
+                        </div>
+                        {% endfor %}
+                </div>
+                {% else %}
+                <p class="text-center text-light">No announcements available at the moment.</p> <!-- Light text for empty state -->
+                {% endif %}
+        </div> 
+{% endblock content %}
