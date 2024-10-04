@@ -4,11 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Post(models.Model):
-
         title = models.CharField(max_length=50, null=False)
         author = models.ForeignKey(User, default='', on_delete=models.CASCADE)
         content = RichTextField(null=True, blank=True)
-        # content = models.TextField(max_length=400, default='')
         created_at = models.DateField(auto_now=False, auto_now_add=False)
         updated_at = models.DateTimeField(auto_now=True)
         image = models.ImageField(upload_to='uploads', default='')
