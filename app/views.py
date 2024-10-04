@@ -5,7 +5,7 @@ from app.models import Posts
 from django.contrib.auth.decorators import login_required
 
 
-def login_page(request) -> render:
+def login_page(request):
     if request.method == "POST":
         user_name = request.POST.get('username')
         password = request.POST.get('password')
@@ -27,7 +27,7 @@ def post_detail(request, pk):
 
 
 @login_required(login_url='login')
-def announcements(request) -> render:  # Corrected function name
+def announcements(request):  # Corrected function name
     posts = Posts.objects.all()
 
     context = {
@@ -36,6 +36,6 @@ def announcements(request) -> render:  # Corrected function name
     return render(request, 'app/home.html', context)  # Corrected template filename
 
 
-def logout_user(request) -> redirect:
+def logout_user(request):
     logout(request)
     return redirect('login')
