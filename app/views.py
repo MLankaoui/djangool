@@ -20,7 +20,7 @@ def login_page(request) -> render:
 
 
 def successfully_logged_in(request) -> render:  # Corrected function name
-    return render(request, 'app/successfully.html')  # Corrected template filename
+    return render(request, 'app/home.html')  # Corrected template filename
 
 
 def logout_user(request) -> redirect:
